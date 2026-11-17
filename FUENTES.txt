@@ -1,0 +1,32 @@
+Alerta para Todos — Alertas de emergencia que todos puedan entender
+Proyecto académico (UPC, HCI for UX Design, 2026) sobre un sistema adaptable de emergencias
+para personas con discapacidad auditiva, visual y adultos mayores con limitaciones sensoriales.
+Tema asignado por el docente: "Alerta para Todos: sistema adaptable de emergencias para personas con discapacidad".
+No se envían alertas reales, no se guardan datos, no se envían correos ni se verifica ninguna identidad.
+Los datos, perfiles y testimonios del sitio son ficticios.
+
+Imágenes del sitio (logo.png, servicios.jpg, galeria1.jpg, galeria2.jpg, galeria3.jpg, equipo-*.jpg):
+Recortes de los mockups del propio equipo en Figma "MockupsAlertaParaTodos" (autoría del equipo), en resolución original:
+servicios.jpg = MW-01 Inicio; galeria1.jpg = MM-02 Alerta activa;
+galeria2.jpg = MM-03 Preferencias de accesibilidad; galeria3.jpg = MM-08 Alerta en alto contraste;
+logo.png = logo de campana del proyecto.
+Fotos del equipo (equipo-canllahui, equipo-granda, equipo-matta, equipo-navarro, equipo-quispe, equipo-ramos .jpg):
+fotografías de los propios integrantes, enviadas por ellos y recortadas en cuadrado para el círculo de "Quiénes somos".
+No se usan imágenes de terceros.
+
+Iconos Facebook, Instagram y YouTube: Simple Icons v15 (CC0), coloreados con el color de cada marca.
+https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/
+https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
+Las marcas pertenecen a sus titulares; no implican afiliación.
+
+Favicon (iconos/favicon.svg): original del equipo, basado en el logo de campana del proyecto.
+
+Tipografía Inter: Google Fonts (licencia SIL Open Font License).
+https://fonts.google.com/specimen/Inter
+
+Video de referencia: UNESCO en español. Los Objetivos de Desarrollo Sostenible qué son y cómo alcanzarlos.
+https://www.youtube.com/watch?v=MCKH5xk8X-g
+El video se inserta desde YouTube; no se descarga ni se redistribuye.
+[Si el equipo sube su propio video del prototipo a YouTube, reemplazarlo aquí y en recursos.html.]
+
+Los enlaces de redes sociales llevan a páginas generales; reemplazar por las del proyecto.

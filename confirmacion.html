@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- PASO 1: permite que el navegador use el ancho real del celular. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siguiente paso | Alerta para Todos</title>
+    <!-- Tipografía Inter de la guía de estilos (si no hay Internet se usa Arial). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <!-- PASO 2: conectar este HTML con el CSS (la ruta entra a la carpeta css). -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Este icono aparece en la pestaña del navegador. -->
+    <link rel="icon" type="image/svg+xml" href="iconos/favicon.svg">
+    <!-- defer: el JavaScript se ejecuta cuando el HTML ya está listo. -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/letra.js" defer></script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<!-- PASO 3: este header permanece visible con position: sticky en el CSS. -->
+<header class="cabecera">
+    <div class="contenedor barra">
+        <a class="marca" href="index.html"><img src="imagenes/logo.png" alt="" width="40">Alerta para Todos</a>
+        <!-- PASO 4: el menú es IGUAL en las tres páginas; si cambias uno, cámbialo en todos. -->
+        <!-- Botón hamburguesa (Semana 11): menu.js lo muestra en pantallas pequeñas. -->
+        <button id="boton-menu" class="hamburguesa" type="button"
+                aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú">
+            <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span id="texto-menu">Menú</span>
+        </button>
+        <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Quiénes somos</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#galeria">Galería</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="recursos.html">Video y guía</a></li>
+                <li>
+                    <!-- details abre el submenú con clic, Enter o toque; no necesita JS. -->
+                    <details id="resolver" class="desplegable">
+                        <summary>Probar</summary>
+                        <!-- Esta lista es el menú vertical desplegable: una demo por integrante. -->
+                        <ul class="submenu">
+                            <li><a href="index.html#orientador">Perfil y canales (HU-01)</a></li>
+                            <li><a href="index.html#pasos">Instrucciones paso a paso (HU-019)</a></li>
+                            <li><a href="index.html#letra">Tamaño de letra (HU-025)</a></li>
+                            <li><a href="index.html#entendido">Confirmar «Entendido» (HU-038)</a></li>
+                            <li><a href="index.html#ultima">Última alerta (HU-047)</a></li>
+                            <li><a href="index.html#contacto">Contacto de confianza (HU-011)</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="contenido" class="contenedor seccion">
+    <section class="confirmacion" aria-labelledby="confirmado">
+        <p class="etiqueta">Final de la demostración</p>
+        <div class="exito" role="status">
+            <h1 id="confirmado">✔ Contacto de confianza registrado (simulación)</h1>
+            <p>Así se vería el cierre del registro. En un servicio real, la persona elegida recibiría un aviso si no confirmas una alerta.</p>
+        </div>
+        <p>Este es un mensaje fijo de prueba. No se ha guardado tu información, no se envió ningún correo ni se activó ninguna alerta real.</p>
+        <h2>¿Quieres repetir el recorrido?</h2>
+        <p>Vuelve a probar otro perfil o regresa al formulario.</p>
+        <a class="boton" href="index.html#orientador">Probar otro perfil</a>
+        <a class="enlace" href="index.html#contacto">Volver al formulario</a>
+        <a class="enlace" href="index.html#inicio">Ir al inicio</a>
+    </section>
+</main>
+<!-- PASO FINAL: pie compartido por las tres páginas. -->
+<footer class="pie">
+    <div class="contenedor">
+        <p><strong>Alerta para Todos</strong> · Alertas de emergencia que todos puedan entender</p>
+        <p>Contacto de ejemplo: contacto@ejemplo.org</p>
+        <nav class="redes" aria-label="Redes sociales de referencia">
+            <!-- Son páginas generales de las redes; reemplazar por las cuentas del proyecto. -->
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg" alt="" width="24" height="24">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg" alt="" width="24" height="24">Instagram</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg" alt="" width="24" height="24">YouTube</a>
+        </nav>
+        <p>© 2026 Alerta para Todos · Proyecto académico UPC (HCI for UX Design) · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+</footer>
+</body>
+</html>

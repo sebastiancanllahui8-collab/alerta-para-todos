@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- PASO 1: permite que el navegador use el ancho real del celular. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video y guía | Alerta para Todos</title>
+    <!-- Tipografía Inter de la guía de estilos (si no hay Internet se usa Arial). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <!-- PASO 2: conectar este HTML con el CSS (la ruta entra a la carpeta css). -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Este icono aparece en la pestaña del navegador. -->
+    <link rel="icon" type="image/svg+xml" href="iconos/favicon.svg">
+    <!-- defer: el JavaScript se ejecuta cuando el HTML ya está listo. -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/letra.js" defer></script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<!-- PASO 3: este header permanece visible con position: sticky en el CSS. -->
+<header class="cabecera">
+    <div class="contenedor barra">
+        <a class="marca" href="index.html"><img src="imagenes/logo.png" alt="" width="40">Alerta para Todos</a>
+        <!-- PASO 4: el menú es IGUAL en las tres páginas; si cambias uno, cámbialo en todos. -->
+        <!-- Botón hamburguesa (Semana 11): menu.js lo muestra en pantallas pequeñas. -->
+        <button id="boton-menu" class="hamburguesa" type="button"
+                aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú">
+            <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span id="texto-menu">Menú</span>
+        </button>
+        <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Quiénes somos</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#galeria">Galería</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="recursos.html">Video y guía</a></li>
+                <li>
+                    <!-- details abre el submenú con clic, Enter o toque; no necesita JS. -->
+                    <details id="resolver" class="desplegable">
+                        <summary>Probar</summary>
+                        <!-- Esta lista es el menú vertical desplegable: una demo por integrante. -->
+                        <ul class="submenu">
+                            <li><a href="index.html#orientador">Perfil y canales (HU-01)</a></li>
+                            <li><a href="index.html#pasos">Instrucciones paso a paso (HU-019)</a></li>
+                            <li><a href="index.html#letra">Tamaño de letra (HU-025)</a></li>
+                            <li><a href="index.html#entendido">Confirmar «Entendido» (HU-038)</a></li>
+                            <li><a href="index.html#ultima">Última alerta (HU-047)</a></li>
+                            <li><a href="index.html#contacto">Contacto de confianza (HU-011)</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="contenido" class="contenedor seccion">
+    <p class="etiqueta">El contexto de nuestra propuesta</p>
+    <h1>Una alerta solo sirve si se entiende</h1>
+    <section class="dos-columnas" aria-labelledby="video-titulo">
+        <div>
+            <!-- Video insertado desde YouTube (no se descarga). Usar la dirección EMBED, no la watch. -->
+            <iframe class="video"
+                src="https://www.youtube.com/embed/MCKH5xk8X-g"
+                title="Los Objetivos de Desarrollo Sostenible: qué son y cómo alcanzarlos (UNESCO)"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <!-- Crédito del video y enlace alternativo: deben coincidir con FUENTES.txt. -->
+            <p class="nota">Video general sobre los ODS de UNESCO en español. No presenta el prototipo de Alerta para Todos.</p>
+            <p><a href="https://www.youtube.com/watch?v=MCKH5xk8X-g" target="_blank" rel="noopener noreferrer">Abrir el video en YouTube</a> si no se reproduce aquí.</p>
+        </div>
+        <div>
+            <h2 id="video-titulo">De la alerta a la comprensión</h2>
+            <p>Usamos el marco de los ODS como punto de partida. Alerta para Todos propone que cada persona, sin importar cómo percibe la información, entienda qué ocurre y qué debe hacer en una emergencia.</p>
+            <ol>
+                <li>Elige un perfil y mira cómo cambia la alerta.</li>
+                <li>Registra un contacto de confianza con datos ficticios.</li>
+                <li>Observa el final del recorrido de prueba.</li>
+            </ol>
+            <a class="boton" href="index.html#orientador">Probar el recorrido</a>
+        </div>
+    </section>
+</main>
+<!-- PASO FINAL: pie compartido por las tres páginas. -->
+<footer class="pie">
+    <div class="contenedor">
+        <p><strong>Alerta para Todos</strong> · Alertas de emergencia que todos puedan entender</p>
+        <p>Contacto de ejemplo: contacto@ejemplo.org</p>
+        <nav class="redes" aria-label="Redes sociales de referencia">
+            <!-- Son páginas generales de las redes; reemplazar por las cuentas del proyecto. -->
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg" alt="" width="24" height="24">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg" alt="" width="24" height="24">Instagram</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg" alt="" width="24" height="24">YouTube</a>
+        </nav>
+        <p>© 2026 Alerta para Todos · Proyecto académico UPC (HCI for UX Design) · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+</footer>
+</body>
+</html>

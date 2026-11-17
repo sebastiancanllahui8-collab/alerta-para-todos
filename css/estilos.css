@@ -1,0 +1,920 @@
+/* PASO 1. El ancho incluye padding y borde: facilita calcular tamaños. */
+* {
+    box-sizing: border-box;
+}
+
+/* PASO 2. Estilos generales (guía de estilos del informe: Inter, azul #1565C0). */
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    color: #212121;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.4rem; margin: 0 0 1rem; }
+h2 { font-size: 1.8rem; margin-top: 0; }
+h3 { font-size: 1.2rem; }
+
+h1, h2 {
+    color: #1565C0;
+}
+
+a {
+    color: #1565C0;
+    text-underline-offset: 4px;
+}
+
+/* El foco visible permite recorrer la web con el teclado. No quitarlo. */
+a:focus-visible, button:focus-visible, summary:focus-visible,
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid #F9A825;
+    outline-offset: 3px;
+}
+
+/* PASO 3. Nunca estirar una imagen más allá de su contenedor. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.contenedor {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.seccion {
+    padding: 3.2rem 0;
+}
+
+.fondo {
+    background: #E3F2FD;
+}
+
+.etiqueta {
+    font-weight: bold;
+    color: #0D47A1;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 0 0 .4rem;
+}
+
+.nota {
+    font-size: .9rem;
+    color: #616161;
+}
+
+/* Botón principal (rojo = acción importante, siempre con texto). */
+.boton {
+    display: inline-block;
+    background: #D32F2F;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background: #B71C1C;
+}
+
+.enlace {
+    display: inline-block;
+    margin: .8rem;
+}
+
+/* PASO 4. Header fijo: sticky lo mantiene visible al bajar y conserva su espacio. */
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1565C0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Flexbox alinea logo y menú; wrap evita desbordamientos. */
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.marca img {
+    width: 40px;
+    height: auto;
+}
+
+/* PASO 5. Menú horizontal. */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a,
+.desplegable summary {
+    display: block;
+    color: white;
+    padding: 8px 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu a:hover,
+.desplegable summary:hover {
+    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+/* Sobre el fondo azul, el foco amarillo se ve mejor. */
+.cabecera a:focus-visible,
+.cabecera summary:focus-visible {
+    outline-color: #FFEB3B;
+}
+
+/* PASO 6. Menú vertical desplegable: details abre y cierra sin JavaScript. */
+.desplegable {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    width: 230px;
+    margin: 4px 0 0;
+    padding: 5px;
+    list-style: none;
+    background: white;
+    border: 1px solid #90CAF9;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.submenu a {
+    color: #212121;
+}
+
+.submenu a:hover {
+    background: #E3F2FD;
+}
+
+/* Deja espacio al navegar con #id para que el header no tape el título. */
+section[id], main[id] {
+    scroll-margin-top: 90px;
+}
+
+/* PASO 7. Imagen y texto: dos columnas iguales. minmax evita desborde. */
+.dos-columnas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.dos-columnas > * {
+    min-width: 0;
+}
+
+.foto {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Inicio (hero): un poco más de aire arriba y abajo. */
+.hero {
+    padding-top: 3.8rem;
+    padding-bottom: 3.8rem;
+}
+
+/* En el inicio la imagen es una pantalla del prototipo: se muestra completa. */
+#inicio .foto {
+    object-fit: contain;
+    background: #E3F2FD;
+}
+
+/* PASO 8. Tarjetas y galería: tres columnas en escritorio. */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 1.4rem;
+    border-top: 4px solid #1565C0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+}
+
+.numero {
+    color: #0D47A1;
+    font-weight: bold;
+}
+
+figure {
+    margin: 0;
+}
+
+.galeria img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: white;
+    border: 1px solid #90CAF9;
+    border-radius: 8px;
+}
+
+figcaption {
+    padding-top: .4rem;
+    font-size: .9rem;
+}
+
+blockquote {
+    margin: 0 0 1rem;
+    max-width: 780px;
+    font-size: 1.3rem;
+    border-left: 5px solid #1565C0;
+    padding-left: 1rem;
+}
+
+/* PASO 9. Orientador: los radios controlan los paneles con CSS, sin JavaScript. */
+.orientador {
+    background: white;
+    border: 2px solid #1565C0;
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 0;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 .5rem;
+}
+
+/* Los radios se ocultan visualmente (siguen funcionando con teclado) y cada label parece un botón. */
+.orientador {
+    position: relative;
+}
+
+.orientador > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.orientador > label {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+    padding: 8px 14px;
+    cursor: pointer;
+    border: 2px solid #1565C0;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #0D47A1;
+}
+
+/* La opción elegida se resalta (no solo por color: también cambia el fondo). */
+.orientador > input:checked + label {
+    background: #1565C0;
+    color: white;
+}
+
+.orientador > input:focus-visible + label {
+    outline: 3px solid #F9A825;
+    outline-offset: 2px;
+}
+
+.resultados {
+    margin-top: 1rem;
+}
+
+/* Primero se ocultan los tres paneles. */
+.respuesta {
+    display: none;
+    padding: 15px;
+    background: #FFEBEE;
+    border-left: 5px solid #D32F2F;
+}
+
+.respuesta h3 {
+    margin-top: 0;
+    color: #B71C1C;
+}
+
+/* ~ busca un hermano posterior. :checked identifica la opción marcada. */
+#auditiva:checked ~ .resultados .auditiva,
+#visual:checked ~ .resultados .visual,
+#mayor:checked ~ .resultados .mayor,
+#paso1:checked ~ .resultados .paso1,
+#paso2:checked ~ .resultados .paso2,
+#paso3:checked ~ .resultados .paso3 {
+    display: block;
+}
+
+/* PASO 10. Formulario: un campo por fila. */
+.formulario {
+    display: grid;
+    gap: 6px;
+    max-width: 520px;
+    background: white;
+    border: 1px solid #90CAF9;
+    border-radius: 8px;
+    padding: 1.4rem;
+}
+
+.formulario > label {
+    font-weight: 600;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"] {
+    width: 100%;
+    min-width: 0;
+    font: inherit;
+    padding: 10px;
+    border: 1px solid #757575;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.formulario input[type="checkbox"] {
+    accent-color: #1565C0;
+}
+
+.formulario .boton {
+    justify-self: start;
+}
+
+/* PASO 11. Video: conserva la proporción a cualquier ancho. */
+.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    display: block;
+    background: black;
+}
+
+/* Página de confirmación (estado de éxito en verde + texto + icono). */
+.confirmacion {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.exito {
+    background: #E8F5E9;
+    border-left: 5px solid #2E7D32;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+}
+
+.exito h2 {
+    color: #1B5E20;
+    margin-bottom: .4rem;
+}
+
+/* Equipo: una tarjeta por integrante con su rango de HU. */
+.equipo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.equipo li {
+    background: white;
+    border-left: 4px solid #1565C0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.equipo strong,
+.equipo span {
+    display: block;
+}
+
+.equipo span {
+    font-size: .9rem;
+    color: #616161;
+}
+
+/* Panel informativo (azul) para las demos que no son una alerta de emergencia. */
+.respuesta.neutra {
+    background: #E3F2FD;
+    border-left-color: #1565C0;
+}
+
+.respuesta.neutra h3 {
+    color: #0D47A1;
+}
+
+/* HU-025: el tamaño del texto cambia según el radio elegido. */
+.muestra {
+    padding: 15px;
+    background: #FFEBEE;
+    border-left: 5px solid #D32F2F;
+}
+
+.texto-muestra {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#letra-grande:checked ~ .resultados .texto-muestra { font-size: 1.5rem; }
+#letra-muy:checked ~ .resultados .texto-muestra { font-size: 2.1rem; }
+
+/* HU-038: un checkbox oculto + su label (botón) cambia el mensaje. */
+.confirmar-demo {
+    position: relative;
+    background: white;
+    border: 2px solid #1565C0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.confirmar-demo > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.alerta-caja {
+    margin-bottom: 1rem;
+    padding: 15px;
+    background: #FFEBEE;
+    border-left: 5px solid #D32F2F;
+}
+
+.alerta-caja h3 {
+    margin-top: 0;
+    color: #B71C1C;
+}
+
+.estado {
+    margin: 1rem 0 0;
+}
+
+.hecho {
+    display: none;
+    padding: 10px 15px;
+    background: #E8F5E9;
+    border-left: 5px solid #2E7D32;
+    color: #1B5E20;
+    font-weight: 600;
+}
+
+#confirmar:checked ~ .hecho { display: block; }
+#confirmar:checked ~ .pendiente { display: none; }
+#confirmar:checked ~ label.boton { background: #2E7D32; }
+#confirmar:focus-visible ~ label.boton {
+    outline: 3px solid #F9A825;
+    outline-offset: 3px;
+}
+
+/* HU-047: última alerta que se abre y se cierra con details/summary. */
+.ultima {
+    background: white;
+    border: 2px solid #1565C0;
+    border-radius: 8px;
+}
+
+.ultima summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    color: #0D47A1;
+    cursor: pointer;
+}
+
+.ultima ul {
+    margin: 0;
+    padding: 0 18px 16px 38px;
+}
+
+/* Pie de página oscuro: los iconos SVG se invierten a blanco. */
+.pie {
+    background: #1E1E24;
+    color: white;
+    padding: 2rem 0;
+}
+
+.pie p {
+    margin: .3rem 0;
+}
+
+.pie a {
+    color: white;
+}
+
+.redes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: .8rem 0;
+}
+
+.redes a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.redes img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+/* Enlace "Saltar al contenido": solo aparece al usar Tab. */
+.saltar {
+    position: absolute;
+    left: -9999px;
+}
+
+.saltar:focus {
+    left: 1rem;
+    top: 1rem;
+    padding: 1rem;
+    background: white;
+    z-index: 200;
+}
+
+/* PASO 14. ESTILO DE LOS MOCKUPS DE FIGMA (MW-01 a MW-07): fondo gris claro,
+   cabecera blanca con logo azul, menú en píldoras, tarjetas blancas con borde fino
+   y botón rojo de ayuda. Esta parte reemplaza el aspecto de los pasos anteriores. */
+body {
+    background: #F5F7FB;
+}
+
+h1, h2 {
+    color: #212121;
+}
+
+.fondo {
+    background: #EDF3FB;
+}
+
+/* Cabecera blanca con borde inferior (como en el mockup). */
+.cabecera {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E3E7EE;
+    box-shadow: none;
+}
+
+.marca {
+    color: #212121;
+    font-size: 1rem;
+}
+
+.marca img {
+    width: 30px;
+    height: 30px;
+}
+
+.menu a,
+.desplegable summary {
+    color: #424242;
+    font-size: .9rem;
+    font-weight: 500;
+    padding: 7px 12px;
+    border-radius: 8px;
+}
+
+.menu a:hover {
+    background: #E3F2FD;
+    color: #0D47A1;
+    text-decoration: none;
+}
+
+/* "Probar" parece el botón rojo con borde «Solicitar ayuda» del mockup. */
+.desplegable summary {
+    color: #D32F2F;
+    border: 1px solid #D32F2F;
+    background: #FFFFFF;
+    font-weight: 600;
+}
+
+.desplegable summary:hover {
+    background: #FFEBEE;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.cabecera a:focus-visible,
+.cabecera summary:focus-visible {
+    outline-color: #F9A825;
+}
+
+.submenu {
+    border: 1px solid #E3E7EE;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.16);
+}
+
+/* Botones: azul sólido para lo principal, como «Ver alerta activa». */
+.boton {
+    background: #1565C0;
+    border-radius: 8px;
+}
+
+.boton:hover {
+    background: #0D47A1;
+}
+
+/* «Entendido» es verde en el mockup MW-02. */
+.confirmar-demo > label.boton {
+    background: #2E7D32;
+}
+
+/* Tarjetas blancas con borde fino y sombra suave. */
+.tarjeta,
+.equipo li {
+    border: 1px solid #E3E7EE;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+}
+
+.tarjeta {
+    border-top: 1px solid #E3E7EE;
+}
+
+.equipo li {
+    border-left: 1px solid #E3E7EE;
+}
+
+.orientador,
+.confirmar-demo,
+.ultima,
+.formulario {
+    border: 1px solid #E3E7EE;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+}
+
+.galeria img,
+#inicio .foto {
+    border: 1px solid #E3E7EE;
+    border-radius: 10px;
+}
+
+/* Las capturas de celular son altas: se muestran completas sobre fondo celeste. */
+.galeria img {
+    aspect-ratio: 4 / 5;
+    background: #EDF3FB;
+}
+
+/* Opciones en píldoras celestes; la elegida se vuelve azul sólido. */
+.orientador > label {
+    background: #E3F2FD;
+    color: #0D47A1;
+    border: 1px solid #E3F2FD;
+    border-radius: 999px;
+    font-size: .92rem;
+}
+
+.orientador > input:checked + label {
+    background: #1565C0;
+    border-color: #1565C0;
+    color: #FFFFFF;
+}
+
+/* Alertas con contorno rojo completo, como «SÍ TE AFECTA»; éxito con contorno verde. */
+.respuesta,
+.muestra,
+.alerta-caja {
+    border: 1px solid #D32F2F;
+    border-left-width: 1px;
+    border-radius: 10px;
+}
+
+.respuesta.neutra {
+    border-color: #90CAF9;
+}
+
+.hecho,
+.exito {
+    border: 1px solid #2E7D32;
+    border-left-width: 1px;
+    border-radius: 10px;
+}
+
+/* Estado del sistema (franja verde del panel principal, MW-01). */
+.estado-sistema {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin: 0 0 1.4rem;
+    padding: 12px 16px;
+    background: #E8F5E9;
+    border: 1px solid #2E7D32;
+    border-radius: 10px;
+    color: #1B5E20;
+}
+
+.estado-sistema strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+.estado-sistema span {
+    font-size: .88rem;
+}
+
+.estado-sistema .punto {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2E7D32;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+/* Pie claro: texto pequeño gris y enlaces simples. */
+.pie {
+    background: #FFFFFF;
+    color: #616161;
+    border-top: 1px solid #E3E7EE;
+    font-size: .9rem;
+}
+
+.pie a {
+    color: #1565C0;
+}
+
+.redes img {
+    filter: none;
+    opacity: 1;
+}
+
+/* PASO 12. TABLET: estas reglas se aplican a 900 px o menos. */
+@media (max-width: 900px) {
+    h1 { font-size: 2.1rem; }
+
+    .tarjetas,
+    .galeria,
+    .equipo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* PASO 13. CELULAR: cambiamos columnas por una sola columna. */
+@media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+
+    .dos-columnas,
+    .tarjetas,
+    .galeria,
+    .equipo {
+        grid-template-columns: 1fr;
+    }
+
+    .dos-columnas {
+        gap: 1.5rem;
+    }
+
+    .seccion {
+        padding: 2.2rem 0;
+    }
+
+    .barra {
+        justify-content: center;
+        padding: 6px 0;
+    }
+
+    .marca {
+        font-size: 1.1rem;
+    }
+
+    .barra nav {
+        width: 100%;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 0;
+    }
+
+    .menu a,
+    .desplegable summary {
+        padding: 8px 8px;
+        font-size: .95rem;
+    }
+
+    /* El desplegable sigue vertical y dentro de la pantalla. */
+    .submenu {
+        left: auto;
+        right: 0;
+        width: 215px;
+        max-width: 85vw;
+        max-height: 55vh;
+        overflow-y: auto;
+    }
+
+    section[id], main[id] {
+        scroll-margin-top: 150px;
+    }
+
+    .orientador > label {
+        display: block;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .formulario,
+    .orientador {
+        padding: 1rem;
+    }
+}
+
+
+/* QUIÉNES SOMOS: misión, visión y fotos del equipo */
+.mision-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+.mision-vision h3 { margin-top: 0; color: #0D47A1; }
+.equipo-fotos { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+.equipo-fotos li { text-align: center; }
+.equipo-fotos img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: 3px solid #1565C0; background: #fff; display: block; margin: 0 auto 10px; }
+.equipo-fotos strong { font-size: .95rem; color: #212121; }
+@media (max-width: 900px) { .equipo-fotos { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .mision-vision { grid-template-columns: 1fr; } .equipo-fotos { grid-template-columns: repeat(2, 1fr); } }
+
+/* ===== SEMANA 11: menú hamburguesa y formulario con JavaScript ===== */
+/* Sin JavaScript no se ve el botón y el menú queda siempre visible. */
+.hamburguesa { display: none; }
+.lineas { display: inline-flex; flex-direction: column; gap: 4px; }
+.lineas span { display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; }
+
+@media (max-width: 900px) {
+    .js .hamburguesa {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 12px; font: inherit; font-weight: 600; color: #212121;
+        background: #FFFFFF; border: 1px solid #C9D1DC; border-radius: 8px; cursor: pointer;
+    }
+    .js .barra { justify-content: space-between; }
+    .js .barra nav { width: 100%; display: none; }
+    .js .barra nav.abierto { display: block; }
+    .js .menu { flex-direction: column; align-items: stretch; gap: 2px; padding-top: 6px; }
+    .js .menu a, .js .desplegable summary { padding: 12px; }
+    /* El submenú se vuelve una lista vertical dentro del panel, sin salirse. */
+    .js .submenu { position: static; width: auto; max-width: none; max-height: none; box-shadow: none; margin: 4px 0 0; }
+}
+
+/* HU-025: barra de tamaño de letra (solo se muestra con JavaScript). */
+.controles-letra { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 14px 0; }
+.controles-letra[hidden] { display: none; }
+.boton-letra { padding: 10px 16px; min-width: 48px; font: inherit; font-weight: 700; color: #0D47A1; background: #fff; border: 1px solid #1565C0; border-radius: 8px; cursor: pointer; }
+.boton-letra:hover:not(:disabled) { background: #E3F2FD; }
+.boton-letra:disabled { opacity: .45; cursor: not-allowed; }
+#letra-estado { font-weight: 600; }

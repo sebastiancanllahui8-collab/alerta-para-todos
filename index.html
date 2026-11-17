@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- PASO 1: permite que el navegador use el ancho real del celular. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Alerta para Todos</title>
+    <!-- Tipografía Inter de la guía de estilos (si no hay Internet se usa Arial). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <!-- PASO 2: conectar este HTML con el CSS (la ruta entra a la carpeta css). -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Este icono aparece en la pestaña del navegador. -->
+    <link rel="icon" type="image/svg+xml" href="iconos/favicon.svg">
+    <!-- defer: el JavaScript se ejecuta cuando el HTML ya está listo. -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/letra.js" defer></script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<!-- PASO 3: este header permanece visible con position: sticky en el CSS. -->
+<header class="cabecera">
+    <div class="contenedor barra">
+        <a class="marca" href="index.html"><img src="imagenes/logo.png" alt="" width="40">Alerta para Todos</a>
+        <!-- PASO 4: el menú es IGUAL en las tres páginas; si cambias uno, cámbialo en todos. -->
+        <!-- Botón hamburguesa (Semana 11): menu.js lo muestra en pantallas pequeñas. -->
+        <button id="boton-menu" class="hamburguesa" type="button"
+                aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú">
+            <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span id="texto-menu">Menú</span>
+        </button>
+        <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Quiénes somos</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#galeria">Galería</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="recursos.html">Video y guía</a></li>
+                <li>
+                    <!-- details abre el submenú con clic, Enter o toque; no necesita JS. -->
+                    <details id="resolver" class="desplegable">
+                        <summary>Probar</summary>
+                        <!-- Esta lista es el menú vertical desplegable: una demo por integrante. -->
+                        <ul class="submenu">
+                            <li><a href="index.html#orientador">Perfil y canales (HU-01)</a></li>
+                            <li><a href="index.html#pasos">Instrucciones paso a paso (HU-019)</a></li>
+                            <li><a href="index.html#letra">Tamaño de letra (HU-025)</a></li>
+                            <li><a href="index.html#entendido">Confirmar «Entendido» (HU-038)</a></li>
+                            <li><a href="index.html#ultima">Última alerta (HU-047)</a></li>
+                            <li><a href="index.html#contacto">Contacto de confianza (HU-011)</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="contenido">
+
+    <!-- INICIO: bloque imagen + texto en dos columnas -->
+    <section id="inicio" class="hero seccion" aria-labelledby="titulo">
+        <!-- Franja de estado del sistema, igual que en el panel principal del mockup (MW-01). -->
+        <div class="contenedor">
+            <div class="estado-sistema" role="status">
+                <span class="punto" aria-hidden="true">✓</span>
+                <span><strong>Estado del sistema: sin alertas activas</strong>Monitoreando tu zona: Lima – Miraflores · Simulación</span>
+            </div>
+        </div>
+        <div class="contenedor dos-columnas">
+            <div>
+                <p class="etiqueta">Sistema adaptable de emergencias</p>
+                <h1 id="titulo">Una alerta que todos puedan entender</h1>
+                <p>Recibir una alerta no es suficiente, también hay que entender qué pasa y qué hacer.
+                   Alerta para Todos adapta las alertas de emergencia para personas con discapacidad
+                   auditiva, visual y adultos mayores.</p>
+                <a class="boton" href="#orientador">Probar mi alerta</a>
+                <a class="enlace" href="recursos.html">Ver video y guía</a>
+                <p class="nota">Proyecto académico: es una simulación y no envía alertas reales.</p>
+            </div>
+            <img class="foto" src="imagenes/servicios.jpg" alt="Celular con una alerta de sismo y sus canales: vibración, voz y luz">
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS: presentación, misión, visión y fotos del equipo -->
+    <section id="nosotros" class="seccion fondo">
+        <div class="contenedor">
+            <p class="etiqueta">Quiénes somos</p>
+            <h2>Un equipo que diseña pensando en todos</h2>
+            <p>Somos estudiantes de la UPC del curso HCI for UX Design. Diseñamos un sistema adaptable
+               de emergencias para personas con discapacidad auditiva, visual y adultos mayores.</p>
+            <div class="mision-vision">
+                <article class="tarjeta">
+                    <h3>Nuestra misión</h3>
+                    <p>Brindar a las personas con discapacidad auditiva, visual y a los adultos mayores
+                       una forma accesible de recibir alertas de emergencia, para que entiendan qué pasa
+                       y actúen de forma rápida y segura.</p>
+                </article>
+                <article class="tarjeta">
+                    <h3>Nuestra visión</h3>
+                    <p>Ser al 2030 una propuesta de referencia en el Perú en comunicación accesible
+                       de emergencias.</p>
+                </article>
+            </div>
+            <ul class="equipo-fotos">
+                <li><img src="imagenes/equipo-canllahui.jpg" alt="Foto de Sebastian Canllahui" loading="lazy"><strong>Sebastian Canllahui</strong></li>
+                <li><img src="imagenes/equipo-granda.jpg" alt="Foto de Jurgen Granda" loading="lazy"><strong>Jurgen Granda</strong></li>
+                <li><img src="imagenes/equipo-matta.jpg" alt="Foto de Salvador Matta" loading="lazy"><strong>Salvador Matta</strong></li>
+                <li><img src="imagenes/equipo-navarro.jpg" alt="Foto de Fabricio Navarro" loading="lazy"><strong>Fabricio Navarro</strong></li>
+                <li><img src="imagenes/equipo-quispe.jpg" alt="Foto de Joao Quispe" loading="lazy"><strong>Joao Quispe</strong></li>
+                <li><img src="imagenes/equipo-ramos.jpg" alt="Foto de Sergio Ramos" loading="lazy"><strong>Sergio Ramos</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SERVICIOS: tres tarjetas -->
+    <section id="servicios" class="seccion">
+        <div class="contenedor">
+            <p class="etiqueta">Cómo adaptamos la alerta</p>
+            <h2>Servicios</h2>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <h3>Vibración y aviso visual</h3>
+                    <p>Para personas sordas o con dificultad para escuchar.</p>
+                </article>
+                <article class="tarjeta">
+                    <h3>Alerta por voz</h3>
+                    <p>Para personas ciegas o con baja visión.</p>
+                </article>
+                <article class="tarjeta">
+                    <h3>Texto simple</h3>
+                    <p>Primero se muestra qué pasa y qué hacer, sin mucho texto.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIONES POR HU (una por integrante, igual que en Figma) ===== -->
+    <!-- Regla: los radios y .resultados deben ser hermanos (mismo padre: el fieldset). -->
+
+    <!-- HU-01 -->
+    <section id="orientador" class="seccion fondo">
+        <div class="contenedor">
+            <p class="etiqueta">HU-01 · Configurar preferencias de accesibilidad auditiva</p>
+            <h2>Prueba tu alerta</h2>
+            <p>Elige un perfil y mira cómo cambia la alerta de sismo y los canales con que te llega.</p>
+            <fieldset class="orientador">
+                <legend>Elige tu perfil:</legend>
+
+                <input type="radio" id="auditiva" name="perfil" checked>
+                <label for="auditiva">Discapacidad auditiva</label>
+
+                <input type="radio" id="visual" name="perfil">
+                <label for="visual">Discapacidad visual</label>
+
+                <input type="radio" id="mayor" name="perfil">
+                <label for="mayor">Adulto mayor</label>
+
+                <div class="resultados">
+                    <div class="respuesta auditiva">
+                        <p class="etiqueta">Alerta con vibración y pantalla completa</p>
+                        <h3>⚠ ALERTA: SISMO - EMERGENCIA REAL</h3>
+                        <p>Aléjate de las ventanas y ve a la zona segura.</p>
+                        <p>Canales: vibración fuerte y aviso en pantalla completa.</p>
+                    </div>
+                    <div class="respuesta visual">
+                        <p class="etiqueta">Alerta con voz y letra grande</p>
+                        <h3>⚠ ALERTA: SISMO - EMERGENCIA REAL</h3>
+                        <p>La alerta se lee en voz alta paso a paso y puedes pedir que se repita.</p>
+                        <p>Canales: voz, vibración y letra grande.</p>
+                    </div>
+                    <div class="respuesta mayor">
+                        <p class="etiqueta">Alerta con voz pausada y aviso a un familiar</p>
+                        <h3>⚠ SISMO - NO ES SIMULACRO</h3>
+                        <p>Sal de la casa con calma.</p>
+                        <p>Canales: voz pausada, letra grande y aviso a un familiar.</p>
+                    </div>
+                </div>
+            </fieldset>
+            <p class="nota">Es una simulación, no envía alertas reales. El perfil elegido no se transfiere al formulario.</p>
+        </div>
+    </section>
+
+    <!-- HU-019 -->
+    <section id="pasos" class="seccion">
+        <div class="contenedor">
+            <p class="etiqueta">HU-019 · Escuchar instrucciones paso a paso</p>
+            <h2>Una instrucción a la vez</h2>
+            <p>La alerta se lee por voz, un paso por vez. Elige el paso para ver lo que se escucharía.</p>
+            <fieldset class="orientador">
+                <legend>Paso de la instrucción:</legend>
+
+                <input type="radio" id="paso1" name="paso" checked>
+                <label for="paso1">Paso 1</label>
+
+                <input type="radio" id="paso2" name="paso">
+                <label for="paso2">Paso 2</label>
+
+                <input type="radio" id="paso3" name="paso">
+                <label for="paso3">Paso 3</label>
+
+                <div class="resultados">
+                    <div class="respuesta neutra paso1">
+                        <p class="etiqueta">Se escucha: paso 1 de 3</p>
+                        <h3>🔊 «Aléjate de las ventanas»</h3>
+                        <p>Di «repetir» para escuchar este paso otra vez.</p>
+                    </div>
+                    <div class="respuesta neutra paso2">
+                        <p class="etiqueta">Se escucha: paso 2 de 3</p>
+                        <h3>🔊 «Cúbrete la cabeza con los brazos»</h3>
+                        <p>Di «repetir» para escuchar este paso otra vez.</p>
+                    </div>
+                    <div class="respuesta neutra paso3">
+                        <p class="etiqueta">Se escucha: paso 3 de 3</p>
+                        <h3>🔊 «Ve a la zona segura marcada»</h3>
+                        <p>Di «repetir» para escuchar este paso otra vez.</p>
+                    </div>
+                </div>
+            </fieldset>
+            <p class="nota">Simulación: no se reproduce audio real.</p>
+        </div>
+    </section>
+
+    <!-- HU-025 -->
+    <section id="letra" class="seccion fondo">
+        <div class="contenedor">
+            <p class="etiqueta">HU-025 · Aumentar tamaño de letra desde la alerta</p>
+            <h2>Ajusta el tamaño de la letra</h2>
+            <p>Elige un tamaño y mira cómo cambia el mensaje de la alerta.</p>
+            <!-- Controles con JavaScript (letra.js). Sin JS esta barra queda oculta y se usan las opciones de abajo. -->
+            <div id="controles-letra" class="controles-letra" role="group" aria-label="Tamaño de letra de toda la página" hidden>
+                <button type="button" id="letra-menos" class="boton-letra" aria-label="Disminuir letra">A−</button>
+                <button type="button" id="letra-mas" class="boton-letra" aria-label="Aumentar letra">A+</button>
+                <button type="button" id="letra-reset" class="boton-letra">Restablecer</button>
+                <span id="letra-estado" role="status" aria-live="polite">Tamaño actual: 100 %</span>
+            </div>
+            <fieldset class="orientador">
+                <legend>Tamaño de letra:</legend>
+
+                <input type="radio" id="letra-normal" name="letra" checked>
+                <label for="letra-normal">Normal</label>
+
+                <input type="radio" id="letra-grande" name="letra">
+                <label for="letra-grande">Grande</label>
+
+                <input type="radio" id="letra-muy" name="letra">
+                <label for="letra-muy">Muy grande</label>
+
+                <div class="resultados">
+                    <div class="muestra">
+                        <p class="etiqueta">⚠ Alerta: sismo</p>
+                        <p class="texto-muestra">Aléjate de las ventanas y ve a la zona segura.</p>
+                    </div>
+                </div>
+            </fieldset>
+            <p class="nota">Simulación: el tamaño elegido se recuerda solo en este navegador.</p>
+        </div>
+    </section>
+
+    <!-- HU-038 -->
+    <section id="entendido" class="seccion">
+        <div class="contenedor">
+            <p class="etiqueta">HU-038 · Confirmar comprensión con un botón simple</p>
+            <h2>Confirma que entendiste</h2>
+            <p>Después de leer la alerta, un solo botón confirma que entendiste qué hacer.</p>
+            <div class="confirmar-demo">
+                <input type="checkbox" id="confirmar">
+                <div class="alerta-caja">
+                    <h3>⚠ ALERTA: SISMO - EMERGENCIA REAL</h3>
+                    <p>Aléjate de las ventanas y ve a la zona segura.</p>
+                </div>
+                <label for="confirmar" class="boton">✔ Entendido</label>
+                <p class="estado pendiente">Aún no confirmaste. Si no confirmas, se avisaría a tu contacto de confianza.</p>
+                <p class="estado hecho">✔ Confirmaste que entendiste la alerta. Gracias.</p>
+            </div>
+            <p class="nota">Simulación: no se envía ningún aviso. Vuelve a pulsar el botón para reiniciar.</p>
+        </div>
+    </section>
+
+    <!-- HU-047 -->
+    <section id="ultima" class="seccion fondo">
+        <div class="contenedor">
+            <p class="etiqueta">HU-047 · Consultar la última alerta desde el inicio</p>
+            <h2>Tu última alerta, a un toque</h2>
+            <p>Desde el inicio se ve la última alerta recibida. Ábrela para ver los detalles.</p>
+            <!-- details/summary abre y cierra sin JavaScript. -->
+            <details class="ultima">
+                <summary>Última alerta: Sismo 4.8 · Finalizada</summary>
+                <ul>
+                    <li><strong>Fecha y hora:</strong> 22/10/2026 · 14:32 (ejemplo)</li>
+                    <li><strong>Zona:</strong> Lima · Miraflores</li>
+                    <li><strong>Qué se indicó:</strong> alejarse de las ventanas y buscar una zona segura.</li>
+                    <li><strong>Estado:</strong> ✔ Finalizada, ya no es necesario actuar.</li>
+                </ul>
+            </details>
+            <p class="nota">Datos ficticios para la demostración.</p>
+        </div>
+    </section>
+
+    <!-- HU-011 -->
+    <section id="contacto" class="seccion">
+        <div class="contenedor dos-columnas">
+            <div>
+                <p class="etiqueta">HU-011 · Registrar un contacto de confianza</p>
+                <h2>Registra un contacto de confianza</h2>
+                <p>Si no confirmas una alerta, le avisamos a esta persona. Completa datos ficticios para probar el recorrido.</p>
+                <p class="nota">Esta práctica no guarda datos ni envía mensajes. No ingreses información personal real.</p>
+            </div>
+            <!-- required y type="email" validan en el navegador. Sin name: no se añaden datos a la URL. -->
+            <form action="confirmacion.html" method="get" class="formulario">
+                <label for="nombre">Tu nombre (de prueba)</label>
+                <input type="text" id="nombre" required maxlength="60" placeholder="Ejemplo: Ana" autocomplete="off">
+
+                <label for="contacto-nombre">Nombre del contacto</label>
+                <input type="text" id="contacto-nombre" required maxlength="60" placeholder="Ejemplo: María" autocomplete="off">
+
+                <label for="correo">Correo del contacto (de prueba)</label>
+                <input type="email" id="correo" required placeholder="maria@example.com" autocomplete="off">
+
+                <div><input type="checkbox" id="acepto" required> <label for="acepto">Entiendo que es una simulación.</label></div>
+
+                <button class="boton" type="submit">Guardar contacto</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- PROYECTOS: cómo funciona (3 tarjetas) -->
+    <section id="proyectos" class="seccion fondo">
+        <div class="contenedor">
+            <p class="etiqueta">Recorrido del usuario</p>
+            <h2>Cómo funciona</h2>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <span class="numero">01 / Recibe</span>
+                    <h3>Llega la alerta</h3>
+                    <p>El aviso aparece primero con el motivo: qué pasa y si es una emergencia real o un simulacro.</p>
+                </article>
+                <article class="tarjeta">
+                    <span class="numero">02 / Entiende</span>
+                    <h3>Sigue un paso a la vez</h3>
+                    <p>La acción inmediata se muestra en texto simple, con iconos y, si el usuario lo prefiere, en voz.</p>
+                </article>
+                <article class="tarjeta">
+                    <span class="numero">03 / Confirma</span>
+                    <h3>Pulsa «Entendido»</h3>
+                    <p>El usuario confirma que comprendió. Si no lo hace, se avisa a su contacto de confianza.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA: pantallas del prototipo de Figma -->
+    <section id="galeria" class="seccion">
+        <div class="contenedor">
+            <h2>Galería</h2>
+            <p>Pantallas del prototipo diseñado en Figma.</p>
+            <div class="galeria">
+                <figure><img src="imagenes/galeria1.jpg" alt="Pantalla de alerta activa de sismo" loading="lazy"><figcaption>MM-02 · Alerta activa</figcaption></figure>
+                <figure><img src="imagenes/galeria2.jpg" alt="Pantalla de configuración de accesibilidad" loading="lazy"><figcaption>MM-03 · Preferencias de accesibilidad</figcaption></figure>
+                <figure><img src="imagenes/galeria3.jpg" alt="Alerta en modo alto contraste" loading="lazy"><figcaption>MM-08 · Alerta en alto contraste</figcaption></figure>
+            </div>
+            <p><a class="boton" href="recursos.html">Ver video y guía</a></p>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="seccion fondo">
+        <div class="contenedor">
+            <h2>Testimonio</h2>
+            <blockquote>“Con el aviso en pantalla completa supe qué hacer sin tener que preguntarle a nadie.”</blockquote>
+            <p class="nota">Relato ficticio para representar la necesidad del usuario.</p>
+        </div>
+    </section>
+
+</main>
+<!-- PASO FINAL: pie compartido por las tres páginas. -->
+<footer class="pie">
+    <div class="contenedor">
+        <p><strong>Alerta para Todos</strong> · Alertas de emergencia que todos puedan entender</p>
+        <p>Contacto de ejemplo: contacto@ejemplo.org</p>
+        <nav class="redes" aria-label="Redes sociales de referencia">
+            <!-- Son páginas generales de las redes; reemplazar por las cuentas del proyecto. -->
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg" alt="" width="24" height="24">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg" alt="" width="24" height="24">Instagram</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg" alt="" width="24" height="24">YouTube</a>
+        </nav>
+        <p>© 2026 Alerta para Todos · Proyecto académico UPC (HCI for UX Design) · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+</footer>
+</body>
+</html>
